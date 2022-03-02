@@ -1,12 +1,16 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const { isNumber } = require("util");
 const util = require("util");
 const app = express();
-const port = "3000";
+
 app.use(express.json());
 
-app.listen(port, () => {
-  console.log("Backend is running at port 3000");
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`API is listening at port ${PORT}`);
 });
 
 app.post("/bfhl", async (req, res) => {
